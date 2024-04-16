@@ -1,27 +1,54 @@
 import { Link } from "react-router-dom";
 import { BsGoogle ,BsGithub } from "react-icons/bs";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import swal from 'sweetalert';  
+// import { GoogleAuthProvider } from "firebase/auth/cordova";
+import {GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import app from "../../firebase/firebase.config";
+
+
+
 
 
 
 const Login = () => {
+  const auth = getAuth(app);
+  const googleProvider = new GoogleAuthProvider();
+    const {signIn}=useContext(AuthContext);
+    const [success, setSuccess] = useState("");
 
-    // const {signIn}=useContext(AuthContext);
 
-    const handleGithub = ()=> {
-        console.log("hello github");
+
+    const handleGoogleLogin = ()=> {
+      signInWithPopup(auth, googleProvider)
+       .then((res) => {
+          console.log(res.user);
+          setSuccess(swal("successfully Login with Google")); 
+        })
+        .catch(error => {
+          console.log(error);
+        })
     }
     const handleLogin = e => {
         e.preventDefault();
         const form =new FormData(e.currentTarget);
         console.log(form)
 
-        // signIn(email,password)
-        // .then( result => {
-        //     console.log(result.user)})
+        const email = form.get('email');
+        const password = form.get('password');
+        setSuccess("")
 
-        // .catch(error=>{
-        //      console.error(error);
-        //  })
+        signIn(email,password)
+        .then( result => {
+            console.log(result.user)})
+            setSuccess(
+          swal("Login successful with gmail and password")
+          )
+
+        .catch(error=>{
+             console.error(error);
+         })
     
 
     }
@@ -65,7 +92,7 @@ const Login = () => {
         </form>
         <div className="flex  mx-auto mb-3 w-1/2 md:w-1/4 p-2 border-4">
             <span className="mx-auto flex gap-9">
-            <button><BsGoogle onClick={handleGithub} className="text-3xl"></BsGoogle></button>
+            <button onClick={handleGoogleLogin} ><BsGoogle className="text-3xl"></BsGoogle></button>
             <button><BsGithub className="text-3xl "></BsGithub></button>
             </span>
         </div>
