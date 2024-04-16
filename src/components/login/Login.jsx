@@ -3,16 +3,8 @@ import { BsGoogle ,BsGithub } from "react-icons/bs";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import swal from 'sweetalert';  
-// import { GoogleAuthProvider } from "firebase/auth/cordova";
 import {GoogleAuthProvider,GithubAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../firebase/firebase.config";
-// import { GithubAuthProvider } from "firebase/auth";
-
-
-
-
-
-
 
 const Login = () => {
   const auth = getAuth(app);
@@ -21,7 +13,7 @@ const Login = () => {
 
     const {signIn}=useContext(AuthContext);
     const [success, setSuccess] = useState("");
-
+    const [registerError, setRegisterError] = useState("");
 
 
     const handleGoogleLogin = ()=> {
@@ -62,6 +54,7 @@ const Login = () => {
 
         .catch(error=>{
              console.error(error);
+             setRegisterError(swal("please provide a valid email address and password"));
          })
     
 
