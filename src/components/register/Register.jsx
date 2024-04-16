@@ -2,12 +2,14 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import swal from 'sweetalert';  
+import { FaEye ,FaEyeSlash } from "react-icons/fa";
 
 
 const Register = () => {
   const [registerError, setRegisterError] = useState("");
   const { createRegister } = useContext(AuthContext);
   const [success, setSuccess] = useState("");
+  const [showPassword, setShowPassword] = useState(false)
 
 
   const handleRegister = e => {
@@ -92,17 +94,24 @@ const Register = () => {
             />
           </div>
 
-          <div className="form-control">
+         <div className="relative ">
+         <div className="form-control ">
             <label className="label">
               <span className="label-text">Password</span>
             </label>
             <input
-              type="password"
+            type={showPassword?"text" :"password"}
               name="password"
               placeholder="password"
-              className="input input-bordered"
+              className="input input-bordered relative"
               required
-            />
+            /><span className=" absolute end-1 top-12 pr-2 text-3xl" onClick={()=>setShowPassword(!showPassword)}>
+            {
+              showPassword? <FaEyeSlash /> : <FaEye />
+            }
+            </span>
+         </div>
+            
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">
                 Forgot password?

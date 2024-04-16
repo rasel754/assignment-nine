@@ -4,8 +4,10 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import swal from 'sweetalert';  
 // import { GoogleAuthProvider } from "firebase/auth/cordova";
-import {GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {GoogleAuthProvider,GithubAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../firebase/firebase.config";
+// import { GithubAuthProvider } from "firebase/auth";
+
 
 
 
@@ -15,6 +17,8 @@ import app from "../../firebase/firebase.config";
 const Login = () => {
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+
     const {signIn}=useContext(AuthContext);
     const [success, setSuccess] = useState("");
 
@@ -25,6 +29,16 @@ const Login = () => {
        .then((res) => {
           console.log(res.user);
           setSuccess(swal("successfully Login with Google")); 
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    }
+    const handleGithubLogin = ()=> {
+      signInWithPopup(auth, githubProvider)
+       .then((res) => {
+          console.log(res.user);
+          setSuccess(swal("successfully Login with Github")); 
         })
         .catch(error => {
           console.log(error);
@@ -93,7 +107,7 @@ const Login = () => {
         <div className="flex  mx-auto mb-3 w-1/2 md:w-1/4 p-2 border-4">
             <span className="mx-auto flex gap-9">
             <button onClick={handleGoogleLogin} ><BsGoogle className="text-3xl"></BsGoogle></button>
-            <button><BsGithub className="text-3xl "></BsGithub></button>
+            <button onClick={handleGithubLogin}><BsGithub className="text-3xl "></BsGithub></button>
             </span>
         </div>
         <p className="text-center ">do not have a account ? please <span className="text-red-700 font-semibold"><Link to="/register">Register</Link></span> </p>
