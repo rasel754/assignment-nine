@@ -9,6 +9,8 @@ import Register from "./components/register/Register";
 import AuthProvider from "./provider/AuthProvider";
 import ErrorPage from "./components/errorPage/ErrorPage";
 import { HelmetProvider } from "react-helmet-async";
+import EstateDetails from "./components/Home/EstateDetails";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
         path: "/",
         loader:()=> fetch('fakeData.json'),
         element: <Home></Home>,
+      },
+      {
+        path:"/estateDetails/:id",
+        element:<PrivateRoute><EstateDetails></EstateDetails></PrivateRoute>
       },
       {
         path: "/login",
