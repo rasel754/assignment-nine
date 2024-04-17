@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/estateDetails/:id",
-        loader:()=> fetch('/fakeData.json'),
+        // loader:()=> fetch('/fakeData.json'),
         element:<PrivateRoute><EstateDetails></EstateDetails></PrivateRoute>
       },
       {
