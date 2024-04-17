@@ -11,6 +11,7 @@ import ErrorPage from "./components/errorPage/ErrorPage";
 import { HelmetProvider } from "react-helmet-async";
 import EstateDetails from "./components/Home/EstateDetails";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import UserInformation from "./components/userInformation/UserInformation";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path:"/userInformation",
+        element:<PrivateRoute><UserInformation></UserInformation></PrivateRoute>
+      }
     ],
   },
 ]);

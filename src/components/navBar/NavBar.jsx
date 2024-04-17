@@ -1,10 +1,27 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const NavBar = () => {
+  const {user ,logout }=useContext(AuthContext);
+
+  const handleSignOut = () => {
+      logout()
+      .then( result => {
+         console.log(result.user)})
+         
+      .catch( error => {
+         console.error(error);
+      })
+
+  };
     const navLinks =<>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/profile">Profile</NavLink></li>
         <li><NavLink to="/updateProfile">Update Profile</NavLink></li>
+        {
+          user && <li><NavLink to="/userInformation">User Information</NavLink></li>
+        }
     </>
    
     return (
@@ -26,12 +43,19 @@ const NavBar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <button className="btn"><Link to="/login">Login</Link></button>
-  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+    {
+      user ? <>
+        <button onClick={handleSignOut} className="btn"><Link to="/login">sign out</Link></button>
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
-          <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
         </div>
       </div>
+      </>
+      :<button className="btn"><Link to="/login">Login</Link></button>
+
+
+    }
   </div>
 </div>
     );

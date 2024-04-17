@@ -12,7 +12,7 @@ const Login = () => {
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
 
-    const {signIn}=useContext(AuthContext);
+    const {signIn,setUser}=useContext(AuthContext);
     const [success, setSuccess] = useState("");
     const [registerError, setRegisterError] = useState("");
 
@@ -21,6 +21,7 @@ const Login = () => {
       signInWithPopup(auth, googleProvider)
        .then((res) => {
           console.log(res.user);
+          setUser(res.user)
           setSuccess(swal("successfully Login with Google")); 
         })
         .catch(error => {
@@ -31,6 +32,7 @@ const Login = () => {
       signInWithPopup(auth, githubProvider)
        .then((res) => {
           console.log(res.user);
+          setUser(res.user)
           setSuccess(swal("successfully Login with Github")); 
         })
         .catch(error => {
@@ -48,7 +50,9 @@ const Login = () => {
 
         signIn(email,password)
         .then( result => {
+          setUser(result.user)
             console.log(result.user)})
+
             setSuccess(
           swal("Login successful with gmail and password")
           )
@@ -60,6 +64,7 @@ const Login = () => {
     
 
     }
+    
     return (
         <div>
           
