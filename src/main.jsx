@@ -18,6 +18,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        loader:()=> fetch('fakeData.json'),
         element: <Home></Home>,
       },
       {
