@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import swal from 'sweetalert';  
 import { FaEye ,FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -51,6 +52,9 @@ const Register = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>register | page</title>
+      </Helmet>
       <div>
         <h1 className="text-3xl text-center mt-5">Register your account</h1>
         <form

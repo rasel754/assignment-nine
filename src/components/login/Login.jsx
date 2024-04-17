@@ -5,6 +5,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import swal from 'sweetalert';  
 import {GoogleAuthProvider,GithubAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../firebase/firebase.config";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const auth = getAuth(app);
@@ -61,7 +62,11 @@ const Login = () => {
     }
     return (
         <div>
+          
       <div>
+      <Helmet>
+            <title>Login | Page</title>
+          </Helmet>
         <h1 className="text-3xl text-center mt-5">Login your account</h1>
         <form onSubmit={handleLogin} className="card-body md:w-3/4 lg:w-1/2 mx-auto">
           <div className="form-control">
