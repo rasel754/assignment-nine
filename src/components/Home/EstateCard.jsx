@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const EstateCard = ({ estate }) => {
   const { image, estate_title, segment_name, price, location,id } = estate;
+  // console.log(id)
 
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -28,7 +29,6 @@ const EstateCard = ({ estate }) => {
         </div>
         <div className="card-actions justify-end">
           <Link to={`/estateDetails/${id}`}>
-            {" "}
             <button className="btn btn-primary btn-info font-extrabold">
               View Property
             </button>

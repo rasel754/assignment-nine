@@ -4,7 +4,7 @@ import EstateCard from "./EstateCard";
 
 const Home = () => {
     const estates = useLoaderData();
-    console.log(estates)
+    // console.log(estates)
     return (
         <div className="m-12 w-3/4 mx-auto">
             <Helmet>

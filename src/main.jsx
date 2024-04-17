@@ -26,6 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/estateDetails/:id",
+        loader:()=> fetch('/fakeData.json'),
         element:<PrivateRoute><EstateDetails></EstateDetails></PrivateRoute>
       },
       {
@@ -47,10 +48,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
      <HelmetProvider>
-    <AuthProvider>
-     
-        <RouterProvider router={router} />
-      
+    <AuthProvider>  
+        <RouterProvider router={router} />   
     </AuthProvider>
     </HelmetProvider>
   </React.StrictMode>
