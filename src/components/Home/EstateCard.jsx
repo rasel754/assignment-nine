@@ -1,6 +1,8 @@
 import { PiLineSegmentsBold } from "react-icons/pi";
 import { IoLocationSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import 'animate.css';
+
 
 const EstateCard = ({ estate }) => {
   const { image, estate_title, segment_name, price, location,id } = estate;
@@ -13,8 +15,8 @@ const EstateCard = ({ estate }) => {
        <img src={image} alt="Shoes" />
        </div>
       </figure>
-      <div className="card-body">
-        <h2 className="card-title font-bold text-2xl">{estate_title}</h2>{" "}
+      <div className="card-body animate__shakeX ">
+        <h2 className="card-title font-bold text-2xl ">{estate_title}</h2>{" "}
         <hr className="border-red-400" />
         <h2 className="flex items-center font-semibold text-violet-600	">
           <IoLocationSharp></IoLocationSharp>

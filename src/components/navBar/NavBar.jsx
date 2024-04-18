@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import 'animate.css';
+
 
 const NavBar = () => {
   const {user ,logout }=useContext(AuthContext);
@@ -34,7 +36,7 @@ const NavBar = () => {
        {navLinks}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl"><span className="text-blue-600">RS</span> RESIDENCE</a>
+    <a className="btn btn-ghost text-xl animate__bounce  "><span className="text-blue-600">RS</span > RESIDENCE</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
