@@ -7,9 +7,11 @@ const EstateCard = ({ estate }) => {
   // console.log(id)
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div data-aos="fade-left" className="card bg-base-100 shadow-xl">
       <figure>
-        <img src={image} alt="Shoes" />
+       <div data-aos="zoom-in-down">
+       <img src={image} alt="Shoes" />
+       </div>
       </figure>
       <div className="card-body">
         <h2 className="card-title font-bold text-2xl">{estate_title}</h2>{" "}

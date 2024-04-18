@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 const ErrorPage = () => {
   return (
     
-    <div className="text-center mt-32 space-y-6">
+    <div data-aos="zoom-in-down" className="text-center mt-32 space-y-6">
         <Helmet>
             <title>Error | page</title>
         </Helmet>

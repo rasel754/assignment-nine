@@ -16,12 +16,12 @@ const Banner = () => {
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      <SwiperSlide><img className='w-full h-96' src={banner1} alt="" /></SwiperSlide>
-      <SwiperSlide><img className='w-full h-96' src={banner2} alt="" /></SwiperSlide>
-      <SwiperSlide><img className='w-full h-96' src={banner5} alt="" /></SwiperSlide>
-      <SwiperSlide><img className='w-full h-96' src={banner4} alt="" /></SwiperSlide>
-      <SwiperSlide><img className='w-full h-96' src={banner3} alt="" /></SwiperSlide>
-      <SwiperSlide><img className='w-full h-96' src={banner6} alt="" /></SwiperSlide>
+      <SwiperSlide ><img className='w-full h-96' src={banner1} alt="" /></SwiperSlide>
+      <SwiperSlide ><img className='w-full h-96' src={banner2} alt="" /></SwiperSlide>
+      <SwiperSlide ><img className='w-full h-96' src={banner5} alt="" /></SwiperSlide>
+      <SwiperSlide ><img className='w-full h-96' src={banner4} alt="" /></SwiperSlide>
+      <SwiperSlide ><img className='w-full h-96' src={banner3} alt="" /></SwiperSlide>
+      <SwiperSlide ><img className='w-full h-96' src={banner6} alt="" /></SwiperSlide>
      
     </Swiper>
    
